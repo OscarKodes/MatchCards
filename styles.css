@@ -1,0 +1,29 @@
+body {
+  background-color: lavender;
+}
+
+.row {
+  text-align: center;
+}
+
+.card {
+  width: 4rem;
+  height: 4rem;
+  padding: 3rem;
+  display: inline-block;
+  border: 1rem solid grey;
+  margin: 1rem;
+}
+
+.card-front {
+  background-color: white;
+}
+
+.card-back {
+  background-color: steelblue;
+  border-color: steelblue;
+}
+
+.invisible {
+  visibility: hidden;
+}
