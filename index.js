@@ -19,7 +19,8 @@ let score = 0;
 // GAME INIT =======================================================
 function init() {
   setUpRound();
-  listenersOn();
+  cardListeners();
+  btnListeners();
 }
 
 init();
@@ -59,8 +60,9 @@ function shuffleCards() {
     cardsCopy.splice(randomIdx, 1);
   }
 }
-// EVENT LISTENERS ON ============================================
-function listenersOn(){
+
+// CARD LISTENERS============================================
+function cardListeners(){
   allCards.forEach(function(card, i){
     card.addEventListener("click", function(){
 
@@ -87,6 +89,19 @@ function listenersOn(){
         }
       }
     });
+  });
+}
+
+// BUTTON LISTENERS ================================================
+function btnListeners(){
+  easyBtn.addEventListener("click", function(){
+    alert("clicked");
+  });
+  medBtn.addEventListener("click", function(){
+    alert("clicked");
+  });
+  hardBtn.addEventListener("click", function(){
+    alert("clicked");
   });
 }
 
