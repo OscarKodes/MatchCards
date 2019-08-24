@@ -18,6 +18,10 @@ let userClicks = [];
 let score = 0;
 let cardLevel = 6;
 
+// SOUNDS ==========================================================
+let clickSound = new Audio("sounds/click.ogg");
+let correctSound = new Audio("sounds/correct.ogg");
+let winSound = new Audio("sounds/win.ogg");
 
 // GAME INIT =======================================================
 function init() {
@@ -75,7 +79,7 @@ function shuffleCards() {
 function cardListeners(){
   allCards.forEach(function(card, i){
     card.addEventListener("click", function(){
-
+      clickSound.play();
       // If user clicked an already flipped card
       // let them "undo" their move
       if (i === userClicks[0]) {
@@ -172,6 +176,7 @@ function checkMatch() {
     vanishCard(card1);
     // update score
     scoreUp();
+    correctSound.play();
   } else {
     // if no match, unflip cards
     unflipCard(card0);
@@ -182,7 +187,7 @@ function checkMatch() {
   userClicks = [];
   setTimeout(function () {
     checkWin();
-  }, 100);
+  }, 750);
 }
 
 // VANISH CARD EFFECT =============================================
@@ -218,6 +223,6 @@ function scoreUp() {
 // CHECK IF USER HAS FOUND ALL MATCHES ==============================
 function checkWin() {
   if (score * 2 === cardLevel) {
-    alert("Congrats you win! Press Reset to start over!");
+    winSound.play();
   }
 }
