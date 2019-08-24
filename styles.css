@@ -1,5 +1,50 @@
 body {
-  background-color: lavender;
+  margin: 0;
+}
+
+.header {
+  background-color: rgb(50, 100, 135);
+  margin: 0;
+  text-align: center;
+  padding: 4rem 0;
+  font-size: 3rem;
+  color: white;
+}
+
+.instructions {
+  width: 15rem;
+  border: 2px solid grey;
+  margin: 2rem auto;
+  color: #777777;
+}
+
+.level-buttons,
+.reset-btn-container {
+  text-align: center;
+}
+
+button{
+  border-radius: 0.2rem;
+  border-width: 0;
+  color: white;
+  background-color: steelblue;
+  padding: 0.5rem;
+  box-shadow: 0.1rem 0.1rem 0.1rem 0.05rem #AAA;
+}
+
+button:hover {
+  filter: brightness(115%);
+  transform: scale(1.05);
+}
+
+.reset-btn {
+  background-color: #AAA;
+  margin: 2rem 0;
+  border-radius: 0;
+}
+
+.score-text {
+  text-align: center;
 }
 
 .row {
@@ -7,21 +52,32 @@ body {
 }
 
 .card {
-  width: 4rem;
+  width: 8rem;
   height: 4rem;
   padding: 3rem;
   display: inline-block;
-  border: 1rem solid grey;
+  border-radius: 1rem;
   margin: 1rem;
+  overflow: hidden;
+  box-shadow: 0.2rem 0.2rem 0.2rem 0.1rem #555555;
+}
+
+.card:hover {
+  box-shadow: 0.25rem 0.25rem 0.25rem 0.15rem #777777;
+  transform: scale(1.08);
+  filter: brightness(104%);
 }
 
 .card-front {
-  background-color: white;
+  /* Background pattern from Toptal Subtle Patterns */
+  background-image:
+  linear-gradient(to bottom right, rgba(255, 255, 200, 0.68),
+   rgba(255, 192, 192, 0.68)),
+    url(images/papyrus.png);
 }
 
 .card-back {
   background-color: steelblue;
-  border-color: steelblue;
 }
 
 .invisible {

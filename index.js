@@ -154,7 +154,7 @@ function createCards() {
     clone.classList.remove("invisible");
     clone.classList.remove("card-back");
     clone.classList.add("card-front");
-    clone.innerText = "Card Front";
+    clone.innerText = "";
     cardParent.appendChild(clone);
   }
 
@@ -215,7 +215,7 @@ function unflipCard(card) {
   card.classList.remove("card-back");
 
   // add default text to cards
-  card.innerText = "Card Front";
+  card.innerText = "";
 }
 
 // SCORE UP =========================================================

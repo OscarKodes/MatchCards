@@ -6,40 +6,64 @@
     <!-- Local Stylesheet -->
     <link rel="stylesheet" href="styles.css">
 
+    <!-- font awesome -->
+
     <title>Match Cards</title>
   </head>
   <body>
-    <h1>Matching Game Woo!</h1>
+    <h1 class="header">Matching Flags Game</h1>
 
-    <h2>
+    <div class="instructions-container">
+      <ul class="instructions">
+        <h3>Instructions</h3>
+        <li>
+          <p>Choose a difficulty level.</p>
+        </li>
+        <li>
+          <p>Click on cards to flip them over.</p>
+        </li>
+        <li>
+          <p>Find each matching pair of a country's flag.</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="level-buttons">
+      <button id="easy-btn" type="button" name="button">Easy</button>
+      <button id="med-btn" type="button" name="button">Medium</button>
+      <button id="hard-btn" type="button" name="button">Hard</button>
+    </div>
+
+    <div class="reset-btn-container">
+      <button class="reset-btn" id="reset-btn" type="button" name="button">
+        Reset Cards
+      </button>
+    </div>
+
+
+    <h2 class="score-text">
       <span class="score"></span>
       Pairs Found
     </h2>
 
-    <button id="easy-btn" type="button" name="button">Easy</button>
-    <button id="med-btn" type="button" name="button">Medium</button>
-    <button id="hard-btn" type="button" name="button">Hard</button>
-
-    <button id="reset-btn" type="button" name="button">Reset</button>
-
     <div class="row">
       <div class="card card-front">
-        Card Front
+
       </div>
       <div class="card card-front">
-        Card Front
+
       </div>
       <div class="card card-front">
-        Card Front
+
       </div>
       <div class="card card-front">
-        Card Front
+
       </div>
       <div class="card card-front">
-        Card Front
+
       </div>
       <div class="card card-front">
-        Card Front
+
       </div>
 
     </div>
