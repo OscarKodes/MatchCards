@@ -2,6 +2,7 @@
 const allCards = document.querySelectorAll(".card");
 const scoreDisplay = document.querySelector(".score");
 
+// VARIABLES =======================================================
 let cardBackMaterials = [
   "Apple", "Hat", "Rock", "Dog",
   "Cup", "Table", "Door", "Plate",
@@ -20,14 +21,42 @@ function init() {
 
 init();
 
-// HELPER FUNCTIONS ================================================
-
+// #### GAME SETUP HELPER FUNCTIONS ##################################
+// SETUP ROUND FUNCTION ================================================
 function setUpRound() {
   generateMaterials();
   scoreDisplay.innerText = score;
 }
 
-// event listeners
+// GENERATE CARD DECK MATERIALS ===================================
+function generateMaterials() {
+
+  // randomize to pick a material
+  /// record into an array until length of 16
+  while (cardBacks.length < 16) {
+
+    let randomIdx = Math.floor(Math.random() * cardBackMaterials.length);
+    let randomPair = cardBackMaterials[randomIdx];
+    cardBacks.push(randomPair, randomPair);
+    cardBackMaterials.splice(randomIdx, 1);
+  }
+
+  // shuffle array with random number
+  shuffleCards();
+}
+
+// SHUFFLE THE CARD DECK ===========================================
+function shuffleCards() {
+  let cardsCopy = cardBacks.slice();
+
+  for (let i = 0; cardsCopy.length > 0; i++) {
+    let randomIdx = Math.floor(Math.random() * cardsCopy.length);
+
+    cardBacks[i] = cardsCopy[randomIdx];
+    cardsCopy.splice(randomIdx, 1);
+  }
+}
+// EVENT LISTENERS ON ============================================
 function listenersOn(){
   allCards.forEach(function(card, i){
     card.addEventListener("click", function(){
@@ -58,7 +87,8 @@ function listenersOn(){
   });
 }
 
-// check if clicked cards match
+// #### DURING GAMEPLAY FUNCTIONS ##################################
+// CHECK IF CLICKED CARDS MATCH ====================================
 function checkMatch() {
 
   let card0 = allCards[userClicks[0]];
@@ -81,12 +111,12 @@ function checkMatch() {
   userClicks = [];
 }
 
-// Vanish card
+// VANISH CARD EFFECT =============================================
 function vanishCard(card) {
   card.classList.add("invisible");
 }
 
-// flip card
+// FLIP CARD =======================================================
 function flipCard(card, i) {
   card.classList.add("card-back");
   card.classList.remove("card-front");
@@ -95,6 +125,7 @@ function flipCard(card, i) {
   card.innerText = cardBacks[i];
 }
 
+// UNFLIP CARD =====================================================
 function unflipCard(card) {
   card.classList.add("card-front");
   card.classList.remove("card-back");
@@ -103,34 +134,9 @@ function unflipCard(card) {
   card.innerText = "Card Front";
 }
 
+// SCORE UP =========================================================
 function scoreUp() {
   // add score
   score++;
   scoreDisplay.innerText = score++;
-}
-
-function generateMaterials() {
-
-  // randomize to pick a material
-  /// record into an array until length of 16
-  while (cardBacks.length < 16) {
-
-    let randomIdx = Math.floor(Math.random() * cardBackMaterials.length);
-    cardBacks.push(cardBackMaterials[randomIdx], cardBackMaterials[randomIdx]);
-    cardBackMaterials.splice(randomIdx, 1);
-  }
-
-  // shuffle array with random number
-  shuffleCards();
-}
-
-function shuffleCards() {
-  let cardsCopy = cardBacks.slice();
-
-  for (let i = 0; cardsCopy.length > 0; i++) {
-    let randomIdx = Math.floor(Math.random() * cardsCopy.length);
-
-    cardBacks[i] = cardsCopy[randomIdx];
-    cardsCopy.splice(randomIdx, 1);
-  }
 }
