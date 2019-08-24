@@ -5,6 +5,7 @@ let cardParent = document.querySelector(".row");
 let easyBtn = document.querySelector("#easy-btn");
 let medBtn = document.querySelector("#med-btn");
 let hardBtn = document.querySelector("#hard-btn");
+let resetBtn = document.querySelector("#reset-btn");
 
 // VARIABLES =======================================================
 let cardBackMaterials = [
@@ -31,6 +32,7 @@ init();
 // SETUP ROUND FUNCTION ================================================
 function setUpRound() {
   generateMaterials();
+  score = 0;
   scoreDisplay.innerText = score;
 }
 
@@ -100,27 +102,34 @@ function cardListeners(){
   });
 }
 
-// LEVEL BUTTON LISTENERS ================================================
+// BUTTON LISTENERS ================================================
 function btnListeners(){
 
   easyBtn.addEventListener("click", function(){
     cardLevel = 6;
-    score = 0;
-    scoreDisplay.innerText = score;
+    // score = 0;
+    // scoreDisplay.innerText = score;
     createCards();
   });
 
   medBtn.addEventListener("click", function(){
     cardLevel = 10;
-    score = 0;
-    scoreDisplay.innerText = score;
+    // score = 0;
+    // scoreDisplay.innerText = score;
     createCards();
   });
 
   hardBtn.addEventListener("click", function(){
-    cardLevel = cardLevel;
-    score = 0;
-    scoreDisplay.innerText = score;
+    cardLevel = 16;
+    // score = 0;
+    // scoreDisplay.innerText = score;
+    createCards();
+  });
+
+  resetBtn.addEventListener("click", function(){
+    // reset user clicks
+    userClicks = [];
+
     createCards();
   });
 }
@@ -171,6 +180,9 @@ function checkMatch() {
 
   // reset user clicks
   userClicks = [];
+  setTimeout(function () {
+    checkWin();
+  }, 100);
 }
 
 // VANISH CARD EFFECT =============================================
@@ -201,4 +213,11 @@ function scoreUp() {
   // add score
   score++;
   scoreDisplay.innerText = score;
+}
+
+// CHECK IF USER HAS FOUND ALL MATCHES ==============================
+function checkWin() {
+  if (score * 2 === cardLevel) {
+    alert("Congrats you win! Press Reset to start over!");
+  }
 }
