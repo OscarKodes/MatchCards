@@ -1,6 +1,9 @@
 // SELECTORS =======================================================
 const allCards = document.querySelectorAll(".card");
 const scoreDisplay = document.querySelector(".score");
+const easyBtn = document.querySelector("#easy-btn");
+const medBtn = document.querySelector("#med-btn");
+const hardBtn = document.querySelector("#hard-btn");
 
 // VARIABLES =======================================================
 let cardBackMaterials = [
