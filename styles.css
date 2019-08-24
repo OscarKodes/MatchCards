@@ -43,8 +43,21 @@ button:hover {
   border-radius: 0;
 }
 
+.game-display {
+  background-image: url(images/floor-tile.png);
+  /* Background pattern from Toptal Subtle Patterns */
+  padding-top: 1.7rem;
+}
+
 .score-text {
+  width: 11rem;
+  background-color: white;
+  margin: 2rem auto;
   text-align: center;
+  padding: 1.75rem;
+  border-radius: 0.8rem;
+  color: #666;
+  font-weight: 300;
 }
 
 .row {
@@ -71,8 +84,8 @@ button:hover {
 .card-front {
   /* Background pattern from Toptal Subtle Patterns */
   background-image:
-  linear-gradient(to bottom right, rgba(255, 255, 200, 0.68),
-   rgba(255, 192, 192, 0.68)),
+  linear-gradient(to bottom right, rgba(137, 168, 93, 0.7),
+   rgba(68, 94, 71, 0.7)),
     url(images/papyrus.png);
 }
 
