@@ -79,6 +79,8 @@ function shuffleCards() {
 function cardListeners(){
   allCards.forEach(function(card, i){
     card.addEventListener("click", function(){
+
+      // Play sound
       clickSound.play();
       // If user clicked an already flipped card
       // let them "undo" their move
@@ -96,15 +98,13 @@ function cardListeners(){
 
         // Check if two clicked and matches
         if (userClicks.length === 2) {
-          // timeout function so user can see back of card
-          setTimeout(function () {
-            checkMatch();
-          }, 1000);
+          checkMatch();
         }
       }
     });
   });
 }
+
 
 // BUTTON LISTENERS ================================================
 function btnListeners(){
@@ -169,25 +169,30 @@ function checkMatch() {
   let card0 = allCards[userClicks[0]];
   let card1 = allCards[userClicks[1]];
 
-  // if match
-  if (card0.innerText === card1.innerText) {
-    // hide both cards
-    vanishCard(card0);
-    vanishCard(card1);
-    // update score
-    scoreUp();
-    correctSound.play();
-  } else {
-    // if no match, unflip cards
-    unflipCard(card0);
-    unflipCard(card1);
-  }
-
   // reset user clicks
   userClicks = [];
+
+  // if match
+  if (card0.innerText === card1.innerText) {
+    setTimeout(function () {
+      // hide both cards
+      vanishCard(card0);
+      vanishCard(card1);
+      // update score
+      scoreUp();
+      correctSound.play();
+    }, 900);
+  } else {
+    setTimeout(function () {
+      // if no match, unflip cards
+      unflipCard(card0);
+      unflipCard(card1);
+    }, 900);
+  }
+
   setTimeout(function () {
     checkWin();
-  }, 750);
+  }, 1500);
 }
 
 // VANISH CARD EFFECT =============================================
