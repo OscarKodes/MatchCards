@@ -1,9 +1,10 @@
 // SELECTORS =======================================================
-const allCards = document.querySelectorAll(".card");
-const scoreDisplay = document.querySelector(".score");
-const easyBtn = document.querySelector("#easy-btn");
-const medBtn = document.querySelector("#med-btn");
-const hardBtn = document.querySelector("#hard-btn");
+let allCards = document.querySelectorAll(".card");
+let scoreDisplay = document.querySelector(".score");
+let cardParent = document.querySelector(".row");
+let easyBtn = document.querySelector("#easy-btn");
+let medBtn = document.querySelector("#med-btn");
+let hardBtn = document.querySelector("#hard-btn");
 
 // VARIABLES =======================================================
 let cardBackMaterials = [
@@ -14,12 +15,13 @@ let cardBackMaterials = [
 let cardBacks = [];
 let userClicks = [];
 let score = 0;
+let cardLevel = 6;
 
 
 // GAME INIT =======================================================
 function init() {
   setUpRound();
-  cardListeners();
+  // cardListeners();
   btnListeners();
 }
 
@@ -34,18 +36,23 @@ function setUpRound() {
 
 // GENERATE CARD DECK MATERIALS ===================================
 function generateMaterials() {
+  // make sure cardBaks is empty before filling it
+  cardBacks = [];
+
+  // create a copy of cardBackMaterials to work with
+  let backMaterialsCopy = cardBackMaterials.slice();
 
   // randomize to pick a material
-  /// record into an array until length of 16
-  while (cardBacks.length < 16) {
+  /// record into an array until length of cardLevel
+  while (cardBacks.length < cardLevel) {
 
-    let randomIdx = Math.floor(Math.random() * cardBackMaterials.length);
-    let randomPair = cardBackMaterials[randomIdx];
+    let randomIdx = Math.floor(Math.random() * backMaterialsCopy.length);
+    let randomPair = backMaterialsCopy[randomIdx];
     cardBacks.push(randomPair, randomPair);
-    cardBackMaterials.splice(randomIdx, 1);
+    backMaterialsCopy.splice(randomIdx, 1);
   }
 
-  // shuffle array with random number
+  // shuffle array with random numbers
   shuffleCards();
 }
 
@@ -59,6 +66,7 @@ function shuffleCards() {
     cardBacks[i] = cardsCopy[randomIdx];
     cardsCopy.splice(randomIdx, 1);
   }
+  cardListeners();
 }
 
 // CARD LISTENERS============================================
@@ -92,17 +100,53 @@ function cardListeners(){
   });
 }
 
-// BUTTON LISTENERS ================================================
+// LEVEL BUTTON LISTENERS ================================================
 function btnListeners(){
+
   easyBtn.addEventListener("click", function(){
-    alert("clicked");
+    cardLevel = 6;
+    score = 0;
+    scoreDisplay.innerText = score;
+    createCards();
   });
+
   medBtn.addEventListener("click", function(){
-    alert("clicked");
+    cardLevel = 10;
+    score = 0;
+    scoreDisplay.innerText = score;
+    createCards();
   });
+
   hardBtn.addEventListener("click", function(){
-    alert("clicked");
+    cardLevel = cardLevel;
+    score = 0;
+    scoreDisplay.innerText = score;
+    createCards();
   });
+}
+
+// REMOVE ALL CARDS ==============================================
+function removeCards() {
+  allCards = document.querySelectorAll(".card");
+  allCards.forEach(function(card){
+    card.remove();
+  });
+}
+
+// CREATE CARDS ==================================================
+function createCards() {
+  removeCards();
+  for (let i = 0; i < cardLevel; i++) {
+    let clone = allCards[0].cloneNode(true);
+    clone.classList.remove("invisible");
+    clone.classList.remove("card-back");
+    clone.classList.add("card-front");
+    clone.innerText = "Card Front";
+    cardParent.appendChild(clone);
+  }
+
+  allCards = document.querySelectorAll(".card");
+  setUpRound();
 }
 
 // #### DURING GAMEPLAY FUNCTIONS ##################################
@@ -156,5 +200,5 @@ function unflipCard(card) {
 function scoreUp() {
   // add score
   score++;
-  scoreDisplay.innerText = score++;
+  scoreDisplay.innerText = score;
 }
