@@ -2,6 +2,10 @@ body {
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 .header {
   background-color: rgb(50, 100, 135);
   margin: 0;
@@ -103,4 +107,16 @@ button:hover {
 
 .invisible {
   visibility: hidden;
+}
+
+.footer {
+  text-align: center;
+  padding: 5rem 0;
+  background-color: steelblue;
+  color: #EEE;
+}
+
+.fab {
+  margin: 0.2rem;
+  color: white;
 }
