@@ -3,85 +3,92 @@
   <head>
     <meta charset="utf-8">
 
-    <!-- Local Stylesheet -->
-    <link rel="stylesheet" href="styles.css">
-
     <!-- font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-    <title>Match Cards</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Local Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+
+    <title>Matching Cards</title>
   </head>
   <body>
-    <h1 class="header">Matching Flags Game</h1>
 
-    <div class="instructions-container">
-      <ul class="instructions">
-        <h3>Instructions</h3>
-        <li>
-          <p>Choose a difficulty level.</p>
-        </li>
-        <li>
-          <p>Click on cards to flip them over.</p>
-        </li>
-        <li>
-          <p>Find each matching pair of a country's flag.</p>
-        </li>
-      </ul>
-    </div>
+    <!-- row for desktop responsiveness -->
+    <!-- <div class="row"> -->
+      <!-- Header -->
+      <h1 class="header display-1">Matching Cards</h1>
 
-    <div class="level-buttons">
-      <button id="easy-btn" class="active-level" type="button" name="button">Easy</button>
-      <button id="med-btn" type="button" name="button">Medium</button>
-      <button id="hard-btn" type="button" name="button">Hard</button>
-    </div>
+      <!-- instructions and buttons -->
+      <!-- <div class="row"> -->
 
-    <div class="reset-btn-container">
-      <button class="reset-btn" id="reset-btn" type="button" name="button">
-        <i class="fas fa-redo-alt"></i> Reset Cards
-      </button>
-    </div>
+        <!-- buttons -->
+        <div class="button-bar d-flex flex-row justify-content-around bg-dark">
+          <!-- Level buttons -->
+          <div class="level-buttons">
+            <button id="easy-btn" class="active-level" type="button" name="button">Easy</button>
+            <button id="med-btn" type="button" name="button">Medium</button>
+            <button id="hard-btn" type="button" name="button">Hard</button>
+          </div>
 
-
-    <div class="game-display">
-      <h2 class="score-text">
-        <span class="score"></span>
-        Pairs Found
-      </h2>
-
-      <div class="row">
-        <div class="card card-front">
+          <!-- reset button -->
+          <div class="reset-btn-container">
+            <button class="reset-btn" id="reset-btn" type="button" name="button">
+              <i class="fas fa-redo-alt"></i> Reset Cards
+            </button>
+          </div>
 
         </div>
-        <div class="card card-front">
+      <!-- </div> -->
+
+      <!-- gameplay area -->
+      <div class="game-display">
+        <!-- score display -->
+        <h2 class="score-text">
+          <span class="score"></span>
+          Pairs Found
+        </h2>
+
+        <div class="d-none win-text">
+          <p>Cleared!</p>
+          <button class="play-again-btn" id="play-again-btn" type="button" name="button">
+            Play Again
+          </button>
+        </div>
+
+        <!-- cards display -->
+        <div class="card-set">
+          <div class="card card-front">
+          </div>
+          <div class="card card-front">
+          </div>
+          <div class="card card-front">
+          </div>
+          <div class="card card-front">
+          </div>
+          <div class="card card-front">
+          </div>
+          <div class="card card-front">
+          </div>
 
         </div>
-        <div class="card card-front">
-
-        </div>
-        <div class="card card-front">
-
-        </div>
-        <div class="card card-front">
-
-        </div>
-        <div class="card card-front">
-
-        </div>
-
       </div>
-    </div>
 
+      <!-- footer -->
+      <div class="footer">
+        <p>Website Created By Oscar Ko</p>
 
-    <div class="footer">
-      <p>Website Created By Oscar Ko</p>
+        <a href="https://github.com/OscarKodes">
+          <i class="fab fa-github fa-2x"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/oscar-ko/">
+          <i class="fab fa-linkedin fa-2x"></i>
+        </a>
+      </div>
+    <!-- </div> -->
 
-      <a href="https://github.com/OscarKodes">
-        <i class="fab fa-github fa-2x"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/oscar-ko/">
-        <i class="fab fa-linkedin fa-2x"></i>
-      </a>
-    </div>
   </body>
   <footer>
     <script src="index.js" charset="utf-8"></script>

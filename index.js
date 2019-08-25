@@ -2,11 +2,12 @@
 let allCards = document.querySelectorAll(".card");
 let scoreDisplay = document.querySelector(".score");
 let scoreText = document.querySelector(".score-text");
-let cardParent = document.querySelector(".row");
+let cardParent = document.querySelector(".card-set");
 let easyBtn = document.querySelector("#easy-btn");
 let medBtn = document.querySelector("#med-btn");
 let hardBtn = document.querySelector("#hard-btn");
 let resetBtn = document.querySelector("#reset-btn");
+let playAgainBtn = document.querySelector("#play-again-btn");
 
 // VARIABLES =======================================================
 let cardBackMaterials = [
