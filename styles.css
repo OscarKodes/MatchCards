@@ -1,5 +1,4 @@
 
-
 /* Mobile and Tablets smaller than 1080px */
 @media only screen and (max-width: 1079px) {
   html {
@@ -17,6 +16,7 @@
 body {
   margin: 0;
   background-color: rgb(68, 94, 71);
+  font-family: 'Montserrat', sans-serif;
 }
 
 a {
@@ -31,10 +31,16 @@ a {
   font-size: 3.5rem;
   font-weight: bold;
   color: white;
+  font-family: 'Roboto', sans-serif;
 }
 
-.button-bar {
+/* laptops and desktops larger than 1080px */
+@media only screen and (min-width: 1080px) {
+  .header {
+    font-size: 6rem;
+  }
 }
+
 
 .level-buttons {
   text-align: center;
@@ -89,6 +95,7 @@ button:hover {
   color: #000;
   font-weight: 300;
   font-size: 1.5rem;
+  font-family: 'Roboto', sans-serif;
 }
 
 .card-set {
