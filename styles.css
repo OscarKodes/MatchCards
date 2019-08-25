@@ -139,6 +139,28 @@ button:hover {
   visibility: hidden;
 }
 
+.win-text {
+  text-align: center;
+  font-size: 3rem;
+  background-color: #000;
+  opacity: .7;
+  padding: 1rem;
+  color: white;
+}
+
+.win-text p,
+.win-text button .play-again-btn{
+  opacity: 1;
+}
+
+.play-again-btn {
+  font-size: 2rem;
+  font-weight: lighter;
+  background-color: rgb(136, 188, 142);
+  border-radius: 0.2rem;
+  padding: .2rem .4rem;
+}
+
 .footer {
   text-align: center;
   padding: 5rem 0;

@@ -8,6 +8,7 @@ let medBtn = document.querySelector("#med-btn");
 let hardBtn = document.querySelector("#hard-btn");
 let resetBtn = document.querySelector("#reset-btn");
 let playAgainBtn = document.querySelector("#play-again-btn");
+let winText = document.querySelector(".win-text");
 
 // VARIABLES =======================================================
 let cardBackMaterials = [
@@ -43,6 +44,8 @@ function setUpRound() {
   scoreDisplay.innerText = score;
   // reset user clicks
   userClicks = [];
+  // Hide win text
+  winText.classList.add("d-none");
 }
 
 // GENERATE CARD DECK MATERIALS ===================================
@@ -141,6 +144,10 @@ function btnListeners(){
   resetBtn.addEventListener("click", function(){
     createCards();
   });
+
+  playAgainBtn.addEventListener("click", function(){
+    resetBtn.click();
+  });
 }
 
 // REMOVE ALL CARDS ==============================================
@@ -235,5 +242,6 @@ function scoreUp() {
 function checkWin() {
   if (score * 2 === cardLevel) {
     winSound.play();
+    winText.classList.remove("d-none");
   }
 }
