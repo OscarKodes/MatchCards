@@ -37,6 +37,12 @@ button:hover {
   transform: scale(1.05);
 }
 
+.active-level {
+  background-color: #b5cde1;
+  color: #4f5122;
+  font-weight: bold;
+}
+
 .reset-btn {
   background-color: #AAA;
   margin: 2rem 0;

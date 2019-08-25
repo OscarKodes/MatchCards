@@ -111,22 +111,25 @@ function btnListeners(){
 
   easyBtn.addEventListener("click", function(){
     cardLevel = 6;
-    // score = 0;
-    // scoreDisplay.innerText = score;
+    easyBtn.classList.add("active-level");
+    medBtn.classList.remove("active-level");
+    hardBtn.classList.remove("active-level");
     createCards();
   });
 
   medBtn.addEventListener("click", function(){
     cardLevel = 10;
-    // score = 0;
-    // scoreDisplay.innerText = score;
+    easyBtn.classList.remove("active-level");
+    medBtn.classList.add("active-level");
+    hardBtn.classList.remove("active-level");
     createCards();
   });
 
   hardBtn.addEventListener("click", function(){
     cardLevel = 16;
-    // score = 0;
-    // scoreDisplay.innerText = score;
+    easyBtn.classList.remove("active-level");
+    medBtn.classList.remove("active-level");
+    hardBtn.classList.add("active-level");
     createCards();
   });
 
