@@ -1,6 +1,7 @@
 // SELECTORS =======================================================
 let allCards = document.querySelectorAll(".card");
 let scoreDisplay = document.querySelector(".score");
+let scoreText = document.querySelector(".score-text");
 let cardParent = document.querySelector(".row");
 let easyBtn = document.querySelector("#easy-btn");
 let medBtn = document.querySelector("#med-btn");
@@ -9,9 +10,10 @@ let resetBtn = document.querySelector("#reset-btn");
 
 // VARIABLES =======================================================
 let cardBackMaterials = [
-  "Apple", "Hat", "Rock", "Dog",
-  "Cup", "Table", "Door", "Plate",
-  "Sink", "Boat", "Tree", "Leaf"
+  "bananas", "cinnamon", "feather", "flower",
+  "hammock", "mountain", "paper-cranes", "rice",
+  "tea", "stones", "tree", "seafoam", "toy-giraffe",
+  "water", "waterfall", "wind-chimes"
 ];
 let cardBacks = [];
 let userClicks = [];
@@ -38,6 +40,8 @@ function setUpRound() {
   generateMaterials();
   score = 0;
   scoreDisplay.innerText = score;
+  // reset user clicks
+  userClicks = [];
 }
 
 // GENERATE CARD DECK MATERIALS ===================================
@@ -134,9 +138,6 @@ function btnListeners(){
   });
 
   resetBtn.addEventListener("click", function(){
-    // reset user clicks
-    userClicks = [];
-
     createCards();
   });
 }
@@ -154,13 +155,14 @@ function createCards() {
   removeCards();
   for (let i = 0; i < cardLevel; i++) {
     let clone = allCards[0].cloneNode(true);
+    clone.style.backgroundImage = "";
     clone.classList.remove("invisible");
     clone.classList.remove("card-back");
     clone.classList.add("card-front");
-    clone.innerText = "";
     cardParent.appendChild(clone);
   }
 
+  // set up wht selector for all cards again to select all the new cards
   allCards = document.querySelectorAll(".card");
   setUpRound();
 }
@@ -176,14 +178,13 @@ function checkMatch() {
   userClicks = [];
 
   // if match
-  if (card0.innerText === card1.innerText) {
+  if (card0.style.backgroundImage === card1.style.backgroundImage) {
     setTimeout(function () {
       // hide both cards
       vanishCard(card0);
       vanishCard(card1);
       // update score
       scoreUp();
-      correctSound.play();
     }, 900);
   } else {
     setTimeout(function () {
@@ -201,6 +202,7 @@ function checkMatch() {
 // VANISH CARD EFFECT =============================================
 function vanishCard(card) {
   card.classList.add("invisible");
+  card.style.backgroundImage = "";
 }
 
 // FLIP CARD =======================================================
@@ -208,24 +210,24 @@ function flipCard(card, i) {
   card.classList.add("card-back");
   card.classList.remove("card-front");
 
-  // add back-values to cards
-  card.innerText = cardBacks[i];
+  // show image
+  card.style.backgroundImage = "url(images/" + cardBacks[i] +".jpg)";
 }
 
 // UNFLIP CARD =====================================================
 function unflipCard(card) {
-  card.classList.add("card-front");
+  card.style.backgroundImage = "";
   card.classList.remove("card-back");
-
-  // add default text to cards
-  card.innerText = "";
+  card.classList.add("card-front");
 }
 
 // SCORE UP =========================================================
 function scoreUp() {
+
   // add score
   score++;
   scoreDisplay.innerText = score;
+  correctSound.play();
 }
 
 // CHECK IF USER HAS FOUND ALL MATCHES ==============================
