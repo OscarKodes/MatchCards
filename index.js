@@ -44,6 +44,8 @@ function setUpRound() {
   scoreDisplay.innerText = score;
   // reset user clicks
   userClicks = [];
+  // show card set
+  cardParent.classList.remove("d-none");
   // Hide win text
   winText.classList.add("d-none");
 }
@@ -241,6 +243,7 @@ function scoreUp() {
 // CHECK IF USER HAS FOUND ALL MATCHES ==============================
 function checkWin() {
   if (score * 2 === cardLevel) {
+    cardParent.classList.add("d-none");
     winSound.play();
     winText.classList.remove("d-none");
   }
